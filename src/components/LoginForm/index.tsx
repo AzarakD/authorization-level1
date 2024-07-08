@@ -1,15 +1,18 @@
 import { FormEvent, useState } from "react";
+
+import { useAuth } from "../../hooks/useAuth";
 import styles from "./LoginForm.module.scss";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegister, setIsRegister] = useState(false);
+  const { authUser } = useAuth();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // await authUser(email, password, isRegister);
+    await authUser(email, password, isRegister);
 
     setEmail("");
     setPassword("");
